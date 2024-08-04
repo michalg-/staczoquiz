@@ -1,0 +1,12 @@
+<div class="grid grid-cols-1 sm:p-10 md:p-40 lg:p-52 gap-4 content-center h-screen">
+  <div class="p-4 shadow-lg rounded-lg bg-purple-500 text-white">
+    <%= form_with(
+          model: player,
+          url: set_player_name_path,
+          class: 'flex flex-col md:p-20 sm:p-10'
+        ) do |form| %>
+      <%= form.text_field :name, placeholder: 'Set your name', autocomplete: 'player_name', class: 'text-center border-1 rounded-lg text-black placeholder:text-gray-400 focus:ring-0 text-4xl' %>
+      <%= form.submit value: 'Enter the game', class: "mt-10 px-6 py-3 font-bold text-white bg-fuchsia-500 border-b-8 border-fuchsia-700 rounded-lg shadow-lg hover:bg-fuchsia-600 active:top-1 active:border-b-2 active:shadow-sm active:mt-12" %>
+    <% end %>
+  </div>
+</div>

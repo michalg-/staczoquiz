@@ -1,0 +1,21 @@
+<div id="game-session">
+  <div class="border-b-2">
+    <%= game_session.players.count %>
+  </div>
+  <div>
+    <%- game_session.players.each.with_index(1) do |player, index| %>
+      <div>
+        <span><%= index %></span>
+        <% if player.name.presence %>
+          <span>
+            <%= player.name %>
+          </span>
+        <% else %>
+          <span class="animate-pulse inline-block">waiting...</span>
+        <% end %>
+      </div>
+
+    <% end %>
+  </div>
+
+</div>

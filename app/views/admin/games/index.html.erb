@@ -1,3 +1,13 @@
-<%- games.each do |game| %>
-
+<% content_for(:header) do %>
+  Games
 <% end %>
+
+<div class="grid grid-cols-4 gap-4">
+  <%- games.each do |game| %>
+    <a href="<%= admin_game_path(game) %>">
+        <div class="rounded-lg dark:bg-white bg-white p-4 shadow-lg">
+          <%= game.name %>
+        </div>
+    </a>
+  <% end %>
+</div>

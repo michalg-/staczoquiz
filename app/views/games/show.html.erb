@@ -1,0 +1,15 @@
+<%= turbo_stream_from("game_session_#{game_session.id}")%>
+
+<div class="grid grid-cols-1 sm:p-10 md:p-40 lg:p-52 gap-2 content-center h-screen">
+  <%= render partial: 'infobox', locals: { info: nil }  %>
+  <div class="p-4 shadow-lg rounded-lg bg-white text-black">
+    <%- case game_session.game_phase %>
+    <% when 'starting' %>
+      <%= render partial: 'participants', locals: { game_session: } %>
+    <% when 'ongoing' %>
+      <%= render partial: 'question', locals: { game_session: } %>
+    <% when 'finished' %>
+      no zarycz
+    <% end %>
+  </div>
+</div>

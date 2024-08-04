@@ -1,5 +1,5 @@
 module GameSessions
-  class Create < BaseService
+  class AddPlayer < BaseService
     def initialize(code:)
       @code = code
     end
@@ -12,8 +12,15 @@ module GameSessions
         return
       end
 
-      game_session.players.create
-      result[:game_session_id] = game_session.id
+      ActiveRecord::Base.transaction do
+        player = Player.create!
+        game_session_player = GameSessionPlayer.create!(player:, game_session:)
+
+        result[:game_session_player_id] = game_session_player.id
+
+        Turbo::StreamsChannel.
+          broadcast_replace_to("game_session_#{game_session.id}", target: 'game-session', partial: 'games/participants', locals: { game_session: } )
+      end
     end
 
     private
