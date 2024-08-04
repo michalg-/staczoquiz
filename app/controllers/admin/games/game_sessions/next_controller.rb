@@ -1,15 +1,14 @@
 module Admin
   module Games
     module GameSessions
-      class RunController < AdminController
+      class NextController < AdminController
         def update
           game_session = GameSession.find(params[:games_session_id])
 
+          next_question = game_session.game.questions.find_by(position: game_session.current_question.position + 1)
+
           ActiveRecord::Base.transaction do
-            game_session.update!(
-              game_phase: :ongoing,
-              current_question: game_session.game.questions.order(:position).first
-            )
+            game_session.update!(current_question: next_question)
 
             game_session.game_session_players.each do |game_session_player|
               Turbo::StreamsChannel.

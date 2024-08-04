@@ -17,5 +17,7 @@
     <div><%= session.code %></div>
     <div><%= session.game_phase %></div>
     <%= link_to('Run', admin_game_games_session_run_path(game, session),  data: { turbo_method: :patch }, class: "rounded-md bg-indigo-600 px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600") %>
+    <%= link_to('Prev', admin_game_games_session_prev_path(game, session),  data: { turbo_method: :patch }, class: "rounded-md bg-indigo-600 px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600") %>
+    <%= link_to('Next', admin_game_games_session_next_path(game, session),  data: { turbo_method: :patch }, class: "rounded-md bg-indigo-600 px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600") %>
   <% end %>
 </div>

@@ -21,6 +21,8 @@ Rails.application.routes.draw do
     resources :games do
       resources :games_sessions do
         resource :run, only: [ :update ], controller: "games/game_sessions/run"
+        resource :next, only: [ :update ], controller: "games/game_sessions/next"
+        resource :prev, only: [ :update ], controller: "games/game_sessions/prev"
       end
     end
   end

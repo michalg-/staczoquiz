@@ -1,4 +1,4 @@
-<%= turbo_stream_from("game_session_#{game_session.id}")%>
+<%= turbo_stream_from("game_session_#{game_session_player.id}")%>
 
 <div class="grid grid-cols-1 sm:p-10 md:p-40 lg:p-52 gap-2 content-center h-screen">
   <%= render partial: 'infobox', locals: { info: nil }  %>
