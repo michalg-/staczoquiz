@@ -1,6 +1,5 @@
 Rails.application.routes.draw do
-
-  mount ActionCable.server => '/cable'
+  mount ActionCable.server => "/cable"
 
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 
@@ -16,23 +15,22 @@ Rails.application.routes.draw do
   # root "posts#index"
 
   namespace :admin do
-    require 'sidekiq/web'
+    require "sidekiq/web"
     mount Sidekiq::Web => "/sidekiq"
 
     resources :games do
       resources :games_sessions do
-        resource :run, only: [:update], controller: 'games/game_sessions/run'
+        resource :run, only: [ :update ], controller: "games/game_sessions/run"
       end
     end
   end
 
-  resource :game, only: [:show]
-  resource :join, only: [:show, :create]
-  resource :set_player_name, only: [:show, :update]
+  resource :game, only: [ :show ]
+  resource :join, only: [ :show, :create ]
+  resource :set_player_name, only: [ :show, :update ]
   resources :game_session, only: [] do
     resources :questions, only: [] do
-      resource :answer, only: [:create], controller: 'game_sessions/questions/answer'
+      resource :answer, only: [ :create ], controller: "game_sessions/questions/answer"
     end
   end
-
 end

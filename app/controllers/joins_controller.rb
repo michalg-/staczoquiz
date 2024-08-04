@@ -1,5 +1,4 @@
 class JoinsController < ApplicationController
-
   def show
     render :show, locals: { game_session: GameSession.new }
   end
@@ -19,7 +18,6 @@ class JoinsController < ApplicationController
     else
       redirect_to join_path
     end
-
   end
 
   private

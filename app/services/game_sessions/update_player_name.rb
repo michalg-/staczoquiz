@@ -10,14 +10,14 @@ module GameSessions
       game_session = game_session_player.game_session
 
       unless game_session_player
-        errors.push('Game session not found')
+        errors.push("Game session not found")
         return
       end
 
       ActiveRecord::Base.transaction do
         game_session_player.player.update!(name:)
         Turbo::StreamsChannel.
-          broadcast_replace_to("game_session_#{game_session.id}", target: 'game-session', partial: 'games/participants', locals: { game_session: } )
+          broadcast_replace_to("game_session_#{game_session.id}", target: "game-session", partial: "games/participants", locals: { game_session: })
       end
     end
 

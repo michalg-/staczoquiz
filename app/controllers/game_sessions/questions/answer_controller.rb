@@ -1,14 +1,13 @@
 module GameSessions
   module Questions
     class AnswerController < ApplicationController
-
       def create
         game_session = game_session_player.game_session
         question = Question.find(params[:question_id])
         choice = Choice.find(params[:choice_id])
 
         if question != game_session.current_question
-          #TODO: it means user send answer too late or sth
+          # TODO: it means user send answer too late or sth
         end
 
 

@@ -8,7 +8,7 @@ module GameSessions
       game_session = GameSession.find_by(code:)
 
       unless game_session
-        errors.push('Game session not found')
+        errors.push("Game session not found")
         return
       end
 
@@ -19,7 +19,7 @@ module GameSessions
         result[:game_session_player_id] = game_session_player.id
 
         Turbo::StreamsChannel.
-          broadcast_replace_to("game_session_#{game_session.id}", target: 'game-session', partial: 'games/participants', locals: { game_session: } )
+          broadcast_replace_to("game_session_#{game_session.id}", target: "game-session", partial: "games/participants", locals: { game_session: })
       end
     end
 

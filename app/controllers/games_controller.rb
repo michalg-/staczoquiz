@@ -1,5 +1,4 @@
 class GamesController < ApplicationController
-
   def show
     render :show, locals: {
       game: game_session_player.game_session.game,

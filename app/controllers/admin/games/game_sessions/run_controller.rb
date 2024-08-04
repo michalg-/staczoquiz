@@ -11,7 +11,7 @@ module Admin
           )
 
           Turbo::StreamsChannel.
-            broadcast_replace_to("game_session_#{game_session.id}", target: 'game-session', partial: 'games/question', locals: { game_session: } )
+            broadcast_replace_to("game_session_#{game_session.id}", target: "game-session", partial: "games/question", locals: { game_session: })
 
           redirect_to admin_game_path(game_session.game)
         end

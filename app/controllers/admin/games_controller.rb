@@ -1,6 +1,5 @@
 module Admin
   class GamesController < AdminController
-
     def index
       games = Game.all
 
@@ -31,6 +30,5 @@ module Admin
     def game_params
       params.require(:game).permit(:name)
     end
-
   end
 end

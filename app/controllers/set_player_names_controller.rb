@@ -1,5 +1,4 @@
 class SetPlayerNamesController < ApplicationController
-
   def show
     unless game_session_player
       redirect_to :join
@@ -20,7 +19,6 @@ class SetPlayerNamesController < ApplicationController
     else
       redirect_to :join
     end
-
   end
 
   private

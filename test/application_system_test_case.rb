@@ -11,5 +11,4 @@ if ENV["CAPYBARA_SERVER_PORT"]
 else
   driven_by :selenium, using: :headless_chrome, screen_size: [ 1400, 1400 ]
 end
-
 end

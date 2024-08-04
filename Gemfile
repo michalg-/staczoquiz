@@ -59,7 +59,7 @@ end
 gem "tailwindcss-rails", "~> 2.6"
 
 gem "foreman", "~> 0.88.1"
-gem 'byebug'
+gem "byebug"
 
 gem "sidekiq", "~> 7.3"
 
