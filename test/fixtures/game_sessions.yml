@@ -1,0 +1,11 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  game_id: one
+  game_phase: MyString
+  code: MyString
+
+two:
+  game_id: two
+  game_phase: MyString
+  code: MyString

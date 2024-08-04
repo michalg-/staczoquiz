@@ -1,0 +1,62 @@
+services:
+  rails-app:
+    build:
+      context: "."
+      dockerfile: "/Users/michal/Projects/quiz/.devcontainer/.features.temp.dockerfile"
+    cap_add: []
+    command:
+    - "-c"
+    - "while sleep 1000; do :; done"
+    entrypoint:
+    - "/bin/sh"
+    environment:
+      DEVCONTAINER_CONFIG_PATH: "/.jbdevcontainer/config/JetBrains/host-config.json"
+    image: "jb-devcontainer-20d2c233b5d4a9414bbf4b20518c2bc6"
+    init: false
+    labels:
+      com.intellij.devcontainer.initial.model: "{\"name\":\"quiz\",\"forwardPorts\"\
+        :[\"3000\",\"6379\"],\"dockerComposeFile\":[\"compose.yaml\"],\"service\"\
+        :\"rails-app\",\"containerEnv\":{\"CAPYBARA_SERVER_PORT\":\"45678\",\"SELENIUM_HOST\"\
+        :\"selenium\",\"REDIS_URL\":\"redis://redis:6379/1\"},\"userEnvProbe\":\"\
+        loginInteractiveShell\",\"workspaceFolder\":\"/workspaces/quiz\",\"postCreateCommand\"\
+        :{\"commands\":[{\"name\":null,\"useShell\":true,\"command\":[\"bin/setup\"\
+        ]}]},\"waitFor\":\"updateContentCommand\",\"features\":{\"features\":[{\"\
+        ref\":{\"registry\":\"ghcr.io\",\"namespace\":\"devcontainers/features\",\"\
+        id\":\"ruby\",\"tag\":\"1\"},\"config\":{\"id\":\"ruby\",\"options\":{},\"\
+        isRequired\":true},\"cachePath\":null},{\"ref\":{\"registry\":\"ghcr.io\"\
+        ,\"namespace\":\"devcontainers/features\",\"id\":\"node\",\"tag\":\"1\"},\"\
+        config\":{\"id\":\"node\",\"options\":{},\"isRequired\":true},\"cachePath\"\
+        :null},{\"ref\":{\"registry\":\"ghcr.io\",\"namespace\":\"devcontainers/features\"\
+        ,\"id\":\"github-cli\",\"tag\":\"1\"},\"config\":{\"id\":\"github-cli\",\"\
+        options\":{},\"isRequired\":true},\"cachePath\":null},{\"ref\":{\"registry\"\
+        :\"ghcr.io\",\"namespace\":\"rails/devcontainer/features\",\"id\":\"activestorage\"\
+        ,\"tag\":\"latest\"},\"config\":{\"id\":\"activestorage\",\"options\":{},\"\
+        isRequired\":true},\"cachePath\":null},{\"ref\":{\"registry\":\"ghcr.io\"\
+        ,\"namespace\":\"rails/devcontainer/features\",\"id\":\"sqlite3\",\"tag\"\
+        :\"latest\"},\"config\":{\"id\":\"sqlite3\",\"options\":{},\"isRequired\"\
+        :true},\"cachePath\":null}],\"entrypoints\":[]}}"
+      com.intellij.devcontainer.local.source: "{\"workingDir\":\"/Users/michal/Projects/quiz/.devcontainer\"\
+        ,\"modelFile\":\"/Users/michal/Projects/quiz/.devcontainer/devcontainer.json\"\
+        ,\"sourcesDir\":\"/Users/michal/Projects/quiz\",\"mount\":true}"
+      com.intellij.devcontainer.workspace.path: "/workspaces/quiz"
+      com.intellij.devcontainer.sources.path: "/Users/michal/Projects/quiz"
+      com.intellij.devcontainer.id: "8b253d3ba2e1de9106f6b8de679f1824"
+      com.intellij.devcontainer.backend.port: "12345"
+      com.intellij.devcontainer.presentable.name: "quiz"
+    ports:
+    - "0.0.0.0::12345"
+    privileged: false
+    security_opt: []
+    user: "root"
+    volumes:
+    - type: "volume"
+      source: "jb_devcontainers_shared_volume"
+      target: "/.jbdevcontainer/.cache/JetBrains/RemoteDev/dist"
+      read_only: false
+    - type: "bind"
+      source: "/Users/michal/Projects/quiz"
+      target: "/workspaces/quiz"
+      read_only: false
+volumes:
+  jb_devcontainers_shared_volume:
+    external: true
