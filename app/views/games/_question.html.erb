@@ -1,0 +1,11 @@
+<div id="game-session">
+  <div class="grid grid-cols-4 gap-4">
+    <%- game_session.current_question.choices.each do |choice| %>
+      <div class="rounded-lg dark:bg-white bg-white p-4 shadow-lg">
+        <%= choice.name %>
+      </div>
+    <% end %>
+  </div>
+
+
+</div>
