@@ -1,9 +1,5 @@
 <div id="game-session" class="p-4 shadow-lg rounded-lg bg-purple-500 text-white">
   <div class="font-bold text-2xl text-center p-20"><%= game_session.current_question.text %></div>
-  <div class="grid grid-cols-4 gap-4">
-<!--    game_session.current_question.choices.order(:position)-->
-    <%- game_session.current_question.choices.each do |choice| %>
-      <%= link_to(choice.text, game_session_question_answer_path(game_session, game_session.current_question, choice_id: choice.id), data: { turbo_method: :post }, class: "px-6 py-3 select-none font-bold text-white bg-fuchsia-500 border-b-8 border-fuchsia-700 rounded-lg shadow-lg hover:bg-fuchsia-600 active:top-1 active:mt-1 active:border-b-2 active:shadow-sm") %>
-    <% end %>
-  </div>
+  <%- answer = Answer.find_by(game_session_player:, question: game_session.current_question) %>
+  <%= render partial: 'answers', locals: { game_session_player:, answer: } %>
 </div>

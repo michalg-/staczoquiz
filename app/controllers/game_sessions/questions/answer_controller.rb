@@ -11,13 +11,22 @@ module GameSessions
         end
 
 
-        Answer.create!(
+        answer = Answer.create!(
           game_session_player:, question:, choice:, correct: question.correct_choice == choice
         )
+
+        respond_to do |format|
+          format.turbo_stream { render turbo_stream: turbo_stream.replace("game_#{game_session_player.id}_#{question.id}", partial: "games/answers", locals: { game_session_player:, answer: }) }
+        end
       rescue ActiveRecord::RecordNotUnique
-        Answer.find_by!(
+        answer = Answer.find_by!(
           game_session_player:, question:
-        ).update!(choice:, correct: question.correct_choice == choice)
+        )
+        answer.update!(choice:, correct: question.correct_choice == choice)
+
+        respond_to do |format|
+          format.turbo_stream { render turbo_stream: turbo_stream.replace("game_#{game_session_player.id}_#{question.id}", partial: "games/answers", locals: { game_session_player:, answer: }) }
+        end
       end
 
       private
