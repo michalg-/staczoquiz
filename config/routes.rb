@@ -19,6 +19,7 @@ Rails.application.routes.draw do
     mount Sidekiq::Web => "/sidekiq"
 
     resources :games do
+      resources :questions, controller: "games/questions"
       resources :games_sessions do
         resource :run, only: [ :update ], controller: "games/game_sessions/run"
         resource :next, only: [ :update ], controller: "games/game_sessions/next"
