@@ -19,6 +19,10 @@ module Admin
 
       private
 
+      def question_params
+        params.require(:question).permit(:text)
+      end
+
       def game
         @game ||= Game.find(params[:game_id])
       end

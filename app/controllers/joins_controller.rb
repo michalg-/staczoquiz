@@ -9,7 +9,7 @@ class JoinsController < ApplicationController
     )
 
     if service.success?
-      cookies[:game_session_player_id] = {
+      cookies.signed[:game_session_player_id] = {
         value: service.result[:game_session_player_id],
         expires: 1.week.from_now
       }

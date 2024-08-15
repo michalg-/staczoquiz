@@ -1,19 +1,15 @@
 <% content_for(:header) do %>
   <%= game.name %>
 <% end %>
-<div class="my-8">
-  <table class="border-collapse table-auto w-full text-sm shadow">
-    <thead class="bg-white">
-    <tr>
-      <th class="border-b dark:border-slate-600 font-medium p-4 pl-8 text-slate-400 dark:text-slate-200 text-left">Id</th>
-      <th class="border-b dark:border-slate-600 font-medium p-4 pl-8 text-slate-400 dark:text-slate-200 text-left">Text</th>
-      <th class="border-b dark:border-slate-600 font-medium p-4 pl-8 text-slate-400 dark:text-slate-200 text-left"></th>
-    </tr>
-    </thead>
-    <tbody id="questions" is="turbo-frame" class="bg-white dark:bg-slate-800">
-      <%- questions.each do |question| %>
-        <%= render 'question', question: %>
-      <% end %>
-    </tbody>
-  </table>
+
+<div class="mt-6 flex items-center justify-end gap-x-6 mb-4">
+  <a href="#" type="submit" class="rounded-md bg-indigo-600 px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600" data-turbo-action="replace">
+    New question
+  </a>
+</div>
+
+<div class="grid grid-cols-1 gap-4" id="questions">
+  <%- questions.each do |question| %>
+    <%= render 'question', question: %>
+  <% end %>
 </div>

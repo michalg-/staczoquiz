@@ -1,8 +1,20 @@
-<%= content_tag :tr, id: dom_id(question), is: 'turbo-frame' do %>
-  <td class="border-b border-slate-100 dark:border-slate-700 p-4 pl-8 text-slate-500 dark:text-slate-400"><%= question.id %></td>
-  <td class="border-b border-slate-100 dark:border-slate-700 p-4 pl-8 text-slate-500 dark:text-slate-400"><%= question.text %></td>
-  <td>
-    <%= link_to 'Edit', edit_admin_game_question_path(question.game, question), data: { turbo_stream: true } %>
-    <%= link_to 'Delete', admin_game_question_path(question.game, question), data: { turbo_method: :delete } %>
-  </td>
-<% end %>
+<div class="p-4 shadow-lg rounded-lg bg-purple-500 text-white">
+  <%= content_tag :div, id: dom_id(question), class: 'font-bold md:text-2xl sm:text-xl p-5 text-center' do %>
+    <%= question.text %>
+    <%= link_to 'Edit', edit_admin_game_question_path(question.game, question), data: { turbo_stream: true }, class: 'rounded-md bg-indigo-600 px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600' %>
+  <% end %>
+
+  <div class="grid grid-cols-2 gap-4" data-controller="game">
+    <%- question.choices.each do |choice| %>
+      <%- if question.correct_choice == choice %>
+        <div class="px-6 py-3 text-center select-none font-bold text-white bg-fuchsia-600 border-b-2 border-fuchsia-700 rounded-lg shadow-lg  top-1 mt-1 shadow-sm">
+          <%=choice.text %>
+        </div>
+      <% else %>
+        <div class="px-6 py-3 text-center select-none font-bold text-white bg-fuchsia-500 border-b-8 border-fuchsia-700 rounded-lg shadow-lg">
+          <%=choice.text %>
+        </div>
+      <% end %>
+    <% end %>
+  </div>
+</div>

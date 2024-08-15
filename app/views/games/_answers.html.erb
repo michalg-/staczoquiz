@@ -2,7 +2,7 @@
   <div class="grid grid-cols-2 gap-4" data-controller="game">
     <%- game_session_player.game_session.current_question.choices.each do |choice| %>
       <%- if answer&.choice == choice %>
-        <%- classes = "px-6 py-3 text-center select-none font-bold text-white bg-fuchsia-500 border-b-8 border-fuchsia-700 rounded-lg shadow-lg hover:bg-fuchsia-600 top-1 mt-1 border-b-2 shadow-sm" %>
+        <%- classes = "px-6 py-3 text-center select-none font-bold text-white bg-fuchsia-500 border-fuchsia-700 rounded-lg shadow-lg hover:bg-fuchsia-600 top-1 mt-1 border-b-2 shadow-sm" %>
       <%- else %>
         <%- classes = "px-6 py-3 text-center select-none font-bold text-white bg-fuchsia-500 border-b-8 border-fuchsia-700 rounded-lg shadow-lg hover:bg-fuchsia-600 active:top-1 active:mt-1 active:border-b-2 active:shadow-sm" %>
       <% end %>

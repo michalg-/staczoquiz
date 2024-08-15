@@ -32,7 +32,7 @@ module GameSessions
       private
 
       def game_session_player
-        @game_session_player ||= GameSessionPlayer.find_by(id: cookies[:game_session_player_id])
+        @game_session_player ||= GameSessionPlayer.find_by(id: cookies.signed[:game_session_player_id])
       end
     end
   end
