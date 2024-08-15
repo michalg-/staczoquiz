@@ -16,8 +16,12 @@ module GameSessions
 
       ActiveRecord::Base.transaction do
         game_session_player.player.update!(name:)
-        Turbo::StreamsChannel.
-          broadcast_replace_to("game_session_#{game_session.id}", target: "game-session", partial: "games/participants", locals: { game_session: })
+        game_session.game_session_players.each do |game_session_player|
+          Turbo::StreamsChannel.
+            broadcast_replace_to(
+              "game_session_#{game_session_player.id}", target: "game-session", partial: "games/participants", locals: { game_session: }
+            )
+        end
       end
     end
 
