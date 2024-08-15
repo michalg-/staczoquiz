@@ -8,7 +8,7 @@ module Admin
       end
 
       def edit
-        render 'edit', locals: { game:, question: }
+        render "edit", locals: { game:, question: }
       end
 
       def update
